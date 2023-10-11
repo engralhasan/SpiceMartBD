@@ -1,0 +1,71 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %} Sign Un {% endblock %}
+{% block body %}
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="{%url 'home' %}">Home</a></li>
+                <li class="active"><a href="{% url 'signin' %}">SIGN IN</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- Begin Login Content Area -->
+<br>
+<br>
+<div class="page-section mb-60">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12" style="margin:auto;">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li style="color:rgba(246, 7, 7, 0.694); font-size: 25px;" class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="login-form">
+                        <h4 class="login-title">Register</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-12 mb-20">
+                                <label>First Name</label>
+                                <input class="mb-0" name="FirstName" type="text" placeholder="First Name">
+                            </div>
+                            <div class="col-md-6 col-12 mb-20">
+                                <label>Last Name</label>
+                                <input class="mb-0" name="LastName" type="text" placeholder="Last Name">
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label>Username</label>
+                                <input class="mb-0" name="Username" type="text" placeholder="Username">
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label>Email Address</label>
+                                <input class="mb-0" name="email" type="email" placeholder="Email Address">
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Password</label>
+                                <input class="mb-0" name="Password" type="password" placeholder="Password">
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Confirm Password</label>
+                                <input class="mb-0" name="ConfirmPassword" type="password"
+                                    placeholder="Confirm Password">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="register-button mt-0">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
