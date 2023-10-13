@@ -69,7 +69,7 @@ def signin(request):
         else:
             messages.warning(request, 'User Not Found')
             return redirect('signup')
-    return render(request, 'accounts/Sign In.html')
+    return render(request, 'accounts/index.html')
 
 
 def signout(request):
@@ -81,12 +81,24 @@ def forget_pass(request):
     otp = random.randint(1111111,9999999)
     if request.method == 'POST':
         email = request.POST.get('email')
-        send_mail_registration(email, otp)
-        user = User.objects.get(email=email)
-        if user:
-            prof = userProfile(user = user, otp = otp)
-            prof.save()
-        return redirect('verify_otp')
+        try:
+            if email:
+                send_mail_registration(email, otp)
+                user = User.objects.get(email=email)
+                if user:
+                    try:
+                        prof = userProfile.objects.get(user=user)
+                        if prof:
+                            prof.otp=otp
+                            prof.save()
+                            return redirect('verify_otp')
+                    except:
+                        prof =userProfile.objects.create(user=user,otp=otp)
+                        prof.save()
+                        return redirect ('verify_otp') 
+        except:
+            messages.warning(request,"User Not Found.")  
+            return redirect('forget_pass')             
     return render(request, 'accounts/Forget_password.html')
 
 def verify_otp(request):
@@ -94,18 +106,37 @@ def verify_otp(request):
         email = request.POST.get('email')
         password = request.POST.get('pass')
         otp = request.POST.get('otp')
-
         user = User.objects.get(email=email)
         if user:
             prof = userProfile.objects.get(user = user)
             if prof.otp == otp:
-                user.set_password(password)
-                user.save()
-                update_session_auth_hash(request, user)
-                messages.warning(request, "User Password Changed.")
-                return redirect('signin')
+                if len(password)<8:
+                    messages.success(request, "Profile pass must be 8 character.")
+                else:
+                    if password:
+                        a = []
+                        b = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                        c = []
+                        d = ['&', '$', '#', '@', '*', '!', '_', '/', '-']
+                        for i in b:
+                            if i in password:
+                                a.append(i)
+                        for i in d:
+                            if i in password:
+                                c.append(i)
+                        if len(a)!=0 and len(c)!= 0:
+                            user.set_password(password)
+                            user.save()
+                            update_session_auth_hash(request, user)
+                            messages.success(request, "User Password Changed.")
+                            return redirect('signin')
+                        else:
+                            messages.warning(request, "enter minimum 1 number and 1 special character in your password.(1-9,@,$,/)")
             else:
                 messages.warning(request, "Otp not matched Try again.")
+                    
+                        
+                
     return render(request, 'accounts/verify_otp.html')
 
 
