@@ -6,3 +6,4 @@ from .models import *
 
 admin.site.register(category)
 admin.site.register(product_all)
+admin.site.register(card)

@@ -14,6 +14,21 @@
                     </div>
                     <div id="cate-toggle" class="category-menu-list">
                         <ul>
+                        {% for i in cata %}
+                            <li class="right-menu"><a href="{% url 'products' i.id %}">{{i.name}}</a>
+
+                        {% endfor %}
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="category-menu">
+                    <div class="category-heading">
+                        <h2 class="categories-toggle"><span>categories</span></h2>
+                    </div>
+                    <div id="cate-toggle" class="category-menu-list">
+                        <ul>
                             <li class="right-menu"><a href="shop-left-sidebar.html">Laptops</a>
                                 <ul class="cat-mega-menu">
                                     <li class="right-menu cat-mega-title">
@@ -125,6 +140,12 @@
                             <li><a href="#">Smartwatch</a></li>
                             <li><a href="#">Out Door Room</a></li>
                             <li><a href="#">Chamcham</a></li>
+                            <li><a href="#">Chamcham</a></li>
+                            <li><a href="#">Chamcham</a></li>
+                            <li><a href="#">Chamcham</a></li>
+                            <li><a href="#">Chamcham</a></li>
+                            <li><a href="#">Chamcham</a></li>
+                            <li><a href="#">Chamcham</a></li>
                             <li class="rx-child"><a href="#">Mobile & Tablets</a></li>
                             <li class="rx-child"><a href="#">Accessories</a></li>
                             <li class="rx-parent">
@@ -133,7 +154,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <!--Category Menu End-->
             </div>
             <!-- Category Menu Area End Here -->

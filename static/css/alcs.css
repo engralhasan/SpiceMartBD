@@ -72,7 +72,9 @@
 /*----------------------------------------*/
 /*  1.1 Basic
 /*----------------------------------------*/
-
+.product-image a img {
+    max-height: 277px;
+}
 body {
 	color: #242424;
 	font-family: 'Rubik', sans-serif;

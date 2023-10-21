@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'catr',
     'accounts',
     'products',
+    'tapp',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Login Form using Html & CSS | CSS3 Animated Login Form</title>
+    <link rel="stylesheet" href="{% static 'css/login/stylee.css' %}">
+</head>
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box">
+            <div class="square" style="--i:0;"></div>
+            <div class="square" style="--i:1;"></div>
+            <div class="square" style="--i:2;"></div>
+            <div class="square" style="--i:3;"></div>
+            <div class="square" style="--i:4;"></div>
+             
+
+            <div class="container">
+                <div class="form">
+                    
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li style="color:rgba(37, 252, 17, 0.843); font-size: 25px;" class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <h2>Login Form</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="inputBox">
+                            <input type="text" name="Username" placeholder="Username">
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit"   value="Login">
+                        </div>
+                        <p class="forget">Forgot Password ? <a href="{% url 'forget_pass' %}">Click Here</a></p>
+
+
+                        <p class="forget">Dont`t have an account ? <a href="{% url 'signup' %}">Sign up</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
