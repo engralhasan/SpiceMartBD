@@ -4,7 +4,7 @@ from .models import *
 def products(request,id):
     cat = category.objects.get(id = id)
     prod = product_all.objects.filter(category=cat)
-    return render(request,'products/product.html',locals())
+    return render(request,'products/shop-left-sidebar.html',locals())
 
 
 def add_to_cart(request, id):
