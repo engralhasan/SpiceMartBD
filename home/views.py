@@ -30,3 +30,17 @@ def remove_cart(request,id):
     prod = card.objects.filter(id=id, user=user)
     prod.delete()
     return redirect(request.META['HTTP_REFERER'])
+
+
+
+
+
+def checkout(request):
+    user = request.user
+    if user.is_authenticated:
+        all_cart = card.objects.filter(user=user)
+        total =0
+        for i in all_cart:
+            subtotal = i.product.new_price*i.quantity
+            total+=subtotal
+    return render(request,'home/checkout.html',locals())

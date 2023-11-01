@@ -78,7 +78,7 @@
                                         <div class="setting ht-setting">
                                             <ul class="ht-setting-list">
                                                 <li><a href="{%url 'signup' %}">My Account</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
+                                                <li><a href="{% url 'checkout' %}">Checkout</a></li>
                                                 <li><a href="{%url 'signin' %}">Sign In</a></li>
                                             </ul>
                                         </div>
@@ -256,7 +256,7 @@
                                                     class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                     <span>View Full Cart</span>
                                                 </a>
-                                                <a href="checkout.html"
+                                                <a href="{% url 'checkout'%}"
                                                     class="li-button li-button-fullwidth li-button-sm">
                                                     <span>Checkout</span>
                                                 </a>
@@ -403,7 +403,7 @@
                                                 <li><a href="index.html">Other Pages</a>
                                                     <ul>
                                                         <li><a href="login-register.html">My Account</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
+                                                        <li><a href="{% url 'checkout' %}">Checkout</a></li>
                                                         <li><a href="compare.html">Compare</a></li>
                                                         <li><a href="wishlist.html">Wishlist</a></li>
                                                         <li><a href="shopping-cart.html">Shopping Cart</a></li>
@@ -694,7 +694,7 @@
                                     <li><a href="#">Payments</a></li>
                                     <li><a href="#">Warantee</a></li>
                                     <li><a href="#">Refunds</a></li>
-                                    <li><a href="#">Checkout</a></li>
+                                    <li><a href="{% url 'checkout'%}">Checkout</a></li>
                                     <li><a href="#">Discount</a></li>
                                     <li><a href="#">Refunds</a></li>
                                     <li><a href="#">Policy Shipping</a></li>
@@ -901,7 +901,7 @@
     <!-- ScrollUp js -->
     <script src="{% static 'js/scrollUp.min.js' %}"></script>
     <!-- Main/Activator js -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main1.js' %}"></script>
 </body>
 
 <!-- index-231:38-->

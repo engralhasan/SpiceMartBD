@@ -46,12 +46,12 @@
                                                 <td class="quantity">
                                                     <label>{{i.quantity}}</label>
                                                     <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="1" type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                        <input class="cart-plus-minus-box" value="{{i.quantity}}" type="text">
+                                                        <div class="dec qtybutton"><a href="{% url 'inc_qtybutton' i.id %}"><i class="fa fa-angle-down"></i></a></div>
+                                                        <div class="inc qtybutton"><a href="{% url 'dec_qtybutton' i.id %}"><i class="fa fa-angle-up"></i></a></div>
                                                     </div>
                                                 </td>
-                                                <td class="product-subtotal"><span class="amount">$0</span></td>
+                                                <td class="product-subtotal"><span class="amount">${% widthratio i.product.new_price 1 i.quantity %}</span></td>
                                             </tr>
                                             {% endfor %}
                                             
@@ -79,7 +79,7 @@
                                                 <li>Subtotal <span>${{total}}</span></li>
                                                 <li>Total <span>${{total}}</span></li>
                                             </ul>
-                                            <a href="#">Proceed to checkout</a>
+                                            <a href="{% url 'checkout' %}">Proceed to checkout</a>
                                         </div>
                                     </div>
                                 </div>
